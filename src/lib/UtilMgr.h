@@ -11,6 +11,13 @@
 #include <iomanip>
 #include <string>
 #include <iostream>
+#include <map>
+#include <QString>
+enum class Color{
+    blueGrey,
+    grey,
+    teal
+};
 
 class UtilMgr final : public Singleton<UtilMgr> {
 public:
@@ -18,6 +25,7 @@ public:
     virtual ~UtilMgr() = default;
     auto log(std::string_view msg) const -> void;
     auto getTime() const -> std::string;
+    auto getPalette(const Color ) const -> std::map<int, QString>;
 };
 
 #endif //PEVIEW_UTILMGR_H

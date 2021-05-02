@@ -8,8 +8,9 @@
 #include "ui_MainWindow.h"
 
 #include <QLayout>
-#include <QPushButton>
 #include <QLabel>
+#include "../lib/UtilMgr.h"
+
 MainWindow::MainWindow(QWidget* parent)
         :
         QMainWindow(parent), ui(new Ui::MainWindow), m_side(this), centralWidget(new QWidget(this))
@@ -28,6 +29,16 @@ MainWindow::MainWindow(QWidget* parent)
 
     auto* pv = new QLabel(this);
     pv->setText(QString("main page"));
+    auto temp = UtilMgr::instance().getPalette(Color::teal)[500];
+    QString style = QString("QLabel{ color: %1; font-size: 1.5rem; line-height: 1.5rem;"
+                            "}"
+                            "QLabel:hover {"
+                            "color: %2"
+                            "}").arg(temp)
+            .arg(UtilMgr::instance().getPalette(Color::teal)[700]);
+    pv->setStyleSheet(style);
+    qDebug() << style;
+
     layout->addWidget(pv, 66);
 
     setCentralWidget(centralWidget);
