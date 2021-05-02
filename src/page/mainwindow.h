@@ -23,8 +23,8 @@ public:
 
 private:
     std::unique_ptr<Ui::MainWindow> ui;
-    Sidebar m_side;
-    QWidget *centralWidget;
+    std::unique_ptr<Sidebar> m_side;
+    QWidget* cw;
 };
 
 #endif //PEVIEWER_MAINWINDOW_H
