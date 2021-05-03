@@ -1,22 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-  <author/>
-  <comment/>
-  <exportmacro/>
-  <class>MainWindow</class>
-  <widget class="QMainWindow" name="MainWindow">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1280</width>
+    <height>720</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>1280</width>
-        <height>720</height>
-      </rect>
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1280</width>
+      <height>720</height>
+     </rect>
     </property>
-    <property name="windowTitle">
-      <string>MainWindow</string>
-    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="sizeConstraint">
+      <enum>QLayout::SetFixedSize</enum>
+     </property>
+    </layout>
+   </widget>
   </widget>
-  <pixmapfunction/>
-  <connections/>
+ </widget>
+ <resources/>
+ <connections/>
 </ui>

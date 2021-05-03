@@ -16,13 +16,110 @@
     <height>16777215</height>
    </size>
   </property>
+  <property name="palette">
+   <palette>
+    <active/>
+    <inactive/>
+    <disabled/>
+   </palette>
+  </property>
   <property name="windowTitle">
    <string>Sidebar</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: red;</string>
+   <string notr="true"/>
   </property>
-  <layout class="QHBoxLayout"/>
+  <layout class="QVBoxLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="sizeConstraint">
+    <enum>QLayout::SetDefaultConstraint</enum>
+   </property>
+   <property name="leftMargin">
+    <number>48</number>
+   </property>
+   <property name="topMargin">
+    <number>48</number>
+   </property>
+   <property name="rightMargin">
+    <number>48</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item alignment="Qt::AlignTop">
+    <widget class="QWidget" name="wrapper" native="true">
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="sizeConstraint">
+       <enum>QLayout::SetDefaultConstraint</enum>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="Logo">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>194</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>194</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+          <pointsize>24</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="whatsThis">
+         <string>SidebarLogo</string>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
+        </property>
+        <property name="lineWidth">
+         <number>0</number>
+        </property>
+        <property name="text">
+         <string>Peview</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

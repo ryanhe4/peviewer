@@ -6,6 +6,8 @@
 #define PEVIEWER_SIDEBAR_H
 
 #include <QWidget>
+#include <QLayout>
+#include <memory>
 QT_BEGIN_NAMESPACE
 namespace Ui { class Sidebar; }
 QT_END_NAMESPACE
@@ -15,9 +17,8 @@ Q_OBJECT
 public:
     explicit Sidebar(QWidget* parent = nullptr);
     ~Sidebar() override;
-    QSize sizeHint() const override;
 private:
-    Ui::Sidebar* ui;
+    std::unique_ptr<Ui::Sidebar> ui;
 };
 
 #endif //PEVIEWER_SIDEBAR_H

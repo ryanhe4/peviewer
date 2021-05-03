@@ -14,35 +14,27 @@
 
 MainWindow::MainWindow(QWidget* parent)
         :
-        QMainWindow(parent), ui(new Ui::MainWindow), cw(new QWidget(this))
+        QMainWindow(parent), ui(new Ui::MainWindow)//, cw(new QWidget(centralWidget()))
 {
     ui->setupUi(this);
 
-    auto* layout = new QHBoxLayout();
-
-    layout->setContentsMargins(0, 0, 0, 0);
-    layout->setSpacing(0);
-
-    //setStyleSheet("MainWindow {background: white; width: 260px; height: 720;}");
-    setCentralWidget(cw);
-    centralWidget()->setLayout(layout);
+    setStyleSheet("MainWindow {background: white; width: 260px; height: 720;}");
 
     m_side = std::make_unique<Sidebar>(this);
 
-    m_side->show();
+    ui->horizontalLayout->addWidget(m_side.get());
+    auto* pv = new QLabel(this);
+    pv->setText(QString("main page"));
+    auto temp = UtilMgr::instance().getPalette(Color::teal)[500];
+    QString style = QString("QLabel{ color: %1; font-size: 1.5rem; line-height: 1.5rem; background: red;"
+                            "}"
+                            "QLabel:hover {"
+                            "color: %2"
+                            "}").arg(temp)
+            .arg(UtilMgr::instance().getPalette(Color::teal)[700]);
+    pv->setStyleSheet(style);
+    ui->horizontalLayout->addWidget(pv);
 
-    layout->addWidget(m_side.get());
-     auto* pv = new QLabel(this);
-     pv->setText(QString("main page"));
-     auto temp = UtilMgr::instance().getPalette(Color::teal)[500];
-     QString style = QString("QLabel{ color: %1; font-size: 1.5rem; line-height: 1.5rem;"
-                             "}"
-                             "QLabel:hover {"
-                             "color: %2"
-                             "}").arg(temp)
-             .arg(UtilMgr::instance().getPalette(Color::teal)[700]);
-     pv->setStyleSheet(style);
-     layout->addWidget(pv);
     setFixedWidth(1280);
     setFixedHeight(720);
 }

@@ -9,30 +9,16 @@
 
 #include <QPushButton>
 #include <QLayout>
+#include "../../lib/UtilMgr.h"
 Sidebar::Sidebar(QWidget* parent)
         :
-        QWidget(parent), ui(new Ui::Sidebar)
+        QWidget(nullptr), ui(new Ui::Sidebar)
 {
     ui->setupUi(this);
-    this->layout()->setContentsMargins(0, 0, 0, 0);
-    layout()->setSpacing(0);
-//    auto* p = new QPushButton("버튼",this);
-//    p->setStyleSheet("QPushButton{border: 1px solid red;}");
-//    qDebug() << geometry().;
-
-//    QPushButton* pb = new QPushButton("버튼");
-    auto* wz = new QWidget(this);
-    this->layout()->addWidget(wz);
-    setMaximumSize(260,720);
-    setMinimumSize(260,720);
+    ui->Logo->setStyleSheet(QString("color: %1;").arg(UtilMgr::instance().getPalette(Color::blueGrey)[800]));
+    setStyleSheet(QString("background:blue;"));
+    setMaximumSize(260, 720);
+    setMinimumSize(260, 720);
 }
 
-Sidebar::~Sidebar()
-{
-    delete ui;
-}
-QSize Sidebar::sizeHint() const
-{
-    return QSize(260,720);
-}
-
+Sidebar::~Sidebar() = default;

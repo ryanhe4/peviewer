@@ -24,7 +24,6 @@ public:
 private:
     std::unique_ptr<Ui::MainWindow> ui;
     std::unique_ptr<Sidebar> m_side;
-    QWidget* cw;
 };
 
 #endif //PEVIEWER_MAINWINDOW_H
