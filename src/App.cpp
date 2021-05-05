@@ -8,11 +8,13 @@ int App::run() const
 {
     UtilMgr::instance().log("Application is running");
 
-    Q_INIT_RESOURCE(resource);
-    QDirIterator it(":", QDirIterator::Subdirectories);
+    UtilMgr::instance().log("Resource List start - ");
+    QDirIterator it(":/lib", QDirIterator::Subdirectories);
     while (it.hasNext()) {
-        qDebug() << it.next();
+        UtilMgr::instance().log( it.next().toUtf8().constData());
     }
+
+    UtilMgr::instance().log("Resource List end - ");
     // show mainwindows items
     m_main_window->show();
     return m_app->exec();

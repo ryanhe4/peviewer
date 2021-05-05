@@ -7,7 +7,6 @@
 #include "mainwindow.h"
 #include "ui_MainWindow.h"
 
-#include <QLayout>
 #include <QLabel>
 #include <memory>
 #include "../lib/UtilMgr.h"
@@ -23,6 +22,8 @@ MainWindow::MainWindow(QWidget* parent)
     m_side = std::make_unique<Sidebar>(this);
 
     ui->horizontalLayout->addWidget(m_side.get());
+
+    // Temp MainPage, Ui 및 클래스로 분리예정
     auto* pv = new QLabel(this);
     pv->setText(QString("main page"));
     auto temp = UtilMgr::instance().getPalette(Color::teal)[500];
@@ -35,6 +36,9 @@ MainWindow::MainWindow(QWidget* parent)
     pv->setStyleSheet(style);
     ui->horizontalLayout->addWidget(pv);
 
+    // Windows Icon 설정
+    setWindowIcon(QIcon(":///lib/icon/workspace.svg"));
+	
     setFixedWidth(1280);
     setFixedHeight(720);
 }

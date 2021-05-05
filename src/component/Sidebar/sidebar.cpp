@@ -7,8 +7,8 @@
 #include "sidebar.h"
 #include "ui_Sidebar.h"
 
-#include <QPushButton>
 #include <QLayout>
+#include "../SidebarItem/sidebaritem.h"
 #include "../../lib/UtilMgr.h"
 Sidebar::Sidebar(QWidget* parent)
         :
@@ -16,8 +16,9 @@ Sidebar::Sidebar(QWidget* parent)
 {
     ui->setupUi(this);
 
+    setSidebarItem();
     setUiStyle();
-
+    // set ClickEvent
     setMaximumSize(260, 720);
     setMinimumSize(260, 720);
 }
@@ -25,11 +26,19 @@ auto Sidebar::setUiStyle() -> void
 {
     // Logo Style
     ui->Logo->setStyleSheet(QString("color: %1;").arg(UtilMgr::instance().getPalette(Color::blueGrey)[800]));
+}
+auto Sidebar::setSidebarItem() -> void
+{
+    //TODO Change items to Array and member variable
+    auto* item = new SidebarItem(nullptr);
+    ui->sidebarItemLayout->addWidget(item);
+    ui->sidebarItemLayout->setStretch(1,1);
+    ui->sidebarItemLayout->setAlignment(item, Qt::AlignTop);
 
-    // SidebarItem Style
-    QIcon ButtonIcon(":/lib/icon/workspace.svg");
-    ui->pushButton_2->setIcon(ButtonIcon);
-    ui->pushButton_2->setIconSize(QSize(28,28));
+    auto* item2 = new SidebarItem(nullptr, "Exit");
+    ui->sidebarItemLayout->addWidget(item2);
+    ui->sidebarItemLayout->setStretch(1,1);
+    ui->sidebarItemLayout->setAlignment(item2, Qt::AlignTop);
 }
 
 Sidebar::~Sidebar() = default;

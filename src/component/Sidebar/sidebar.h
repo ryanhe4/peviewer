@@ -18,8 +18,14 @@ public:
     explicit Sidebar(QWidget* parent = nullptr);
     ~Sidebar() override;
 private:
+    //
     std::unique_ptr<Ui::Sidebar> ui;
+
+private:
+    // method
     auto setUiStyle() -> void;
+    auto setSidebarItem() -> void;
+
 };
 
 #endif //PEVIEWER_SIDEBAR_H
