@@ -16,7 +16,7 @@ Sidebar::Sidebar(QWidget* parent)
 {
     ui->setupUi(this);
     ui->Logo->setStyleSheet(QString("color: %1;").arg(UtilMgr::instance().getPalette(Color::blueGrey)[800]));
-    setStyleSheet(QString("background:blue;"));
+
     setMaximumSize(260, 720);
     setMinimumSize(260, 720);
 }

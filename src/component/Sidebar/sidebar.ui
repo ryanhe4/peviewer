@@ -18,9 +18,39 @@
   </property>
   <property name="palette">
    <palette>
-    <active/>
-    <inactive/>
-    <disabled/>
+    <active>
+     <colorrole role="Highlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>120</green>
+        <blue>215</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </active>
+    <inactive>
+     <colorrole role="Highlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>240</red>
+        <green>240</green>
+        <blue>240</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </inactive>
+    <disabled>
+     <colorrole role="Highlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>120</green>
+        <blue>215</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </disabled>
    </palette>
   </property>
   <property name="windowTitle">
@@ -37,19 +67,25 @@
     <enum>QLayout::SetDefaultConstraint</enum>
    </property>
    <property name="leftMargin">
-    <number>48</number>
+    <number>0</number>
    </property>
    <property name="topMargin">
-    <number>48</number>
+    <number>0</number>
    </property>
    <property name="rightMargin">
-    <number>48</number>
+    <number>0</number>
    </property>
    <property name="bottomMargin">
     <number>0</number>
    </property>
    <item alignment="Qt::AlignTop">
     <widget class="QWidget" name="wrapper" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>720</height>
+      </size>
+     </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <property name="spacing">
        <number>0</number>
@@ -58,10 +94,10 @@
        <enum>QLayout::SetDefaultConstraint</enum>
       </property>
       <property name="leftMargin">
-       <number>0</number>
+       <number>48</number>
       </property>
       <property name="topMargin">
-       <number>0</number>
+       <number>48</number>
       </property>
       <property name="rightMargin">
        <number>0</number>
@@ -69,7 +105,7 @@
       <property name="bottomMargin">
        <number>0</number>
       </property>
-      <item>
+      <item alignment="Qt::AlignTop">
        <widget class="QLabel" name="Logo">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -79,19 +115,18 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>194</width>
-          <height>48</height>
+          <width>0</width>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>194</width>
-          <height>48</height>
+          <width>260</width>
+          <height>720</height>
          </size>
         </property>
         <property name="font">
          <font>
-          <family>Segoe UI</family>
           <pointsize>24</pointsize>
           <bold>true</bold>
          </font>
