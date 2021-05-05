@@ -19,6 +19,7 @@ public:
     ~Sidebar() override;
 private:
     std::unique_ptr<Ui::Sidebar> ui;
+    auto setUiStyle() -> void;
 };
 
 #endif //PEVIEWER_SIDEBAR_H

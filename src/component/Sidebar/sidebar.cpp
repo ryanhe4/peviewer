@@ -15,10 +15,21 @@ Sidebar::Sidebar(QWidget* parent)
         QWidget(nullptr), ui(new Ui::Sidebar)
 {
     ui->setupUi(this);
-    ui->Logo->setStyleSheet(QString("color: %1;").arg(UtilMgr::instance().getPalette(Color::blueGrey)[800]));
+
+    setUiStyle();
 
     setMaximumSize(260, 720);
     setMinimumSize(260, 720);
+}
+auto Sidebar::setUiStyle() -> void
+{
+    // Logo Style
+    ui->Logo->setStyleSheet(QString("color: %1;").arg(UtilMgr::instance().getPalette(Color::blueGrey)[800]));
+
+    // SidebarItem Style
+    QIcon ButtonIcon(":/lib/icon/workspace.svg");
+    ui->pushButton_2->setIcon(ButtonIcon);
+    ui->pushButton_2->setIconSize(QSize(28,28));
 }
 
 Sidebar::~Sidebar() = default;

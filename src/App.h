@@ -14,7 +14,7 @@ public:
     App(int argc, char* argv[]);
     ~App();
 
-    int run();
+    int run() const;
     std::unique_ptr<QApplication> m_app;
     std::unique_ptr<MainWindow> m_main_window;
 };
