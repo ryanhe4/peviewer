@@ -25,9 +25,14 @@ public:
     explicit SidebarItem(QWidget* parent = nullptr, QString _title = "Load",
                          bool _selectable = false,
                          bool _select = false,
-                         QString _rccPath = ":/lib/icon/workspace.svg");
+                         const QString& _rccPath = ":/lib/icon/workspace.svg");
     ~SidebarItem() override;
     bool eventFilter(QObject* watched, QEvent* event);
+
+private:
+    auto setUiStyle() -> void;
+signals:
+    void onExit();
 };
 
 #endif//PEVIEWER_SIDEBARITEM_H

@@ -28,12 +28,17 @@ class Sidebar : public QWidget {
 public:
     explicit Sidebar(QWidget* parent = nullptr);
     ~Sidebar() override;
-    bool eventFilter(QObject* watched, QEvent* event);
 
 private:
     // method
     auto setUiStyle() -> void;
     auto setSidebarItem() -> void;
+
+signals:
+    void onExit();
+
+private slots:
+    void exit();
 };
 
 #endif//PEVIEWER_SIDEBAR_H

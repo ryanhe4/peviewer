@@ -29,6 +29,8 @@ auto Sidebar::setUiStyle() -> void
     // Logo Style
     ui->Logo->setStyleSheet(QString("color: %1;")
                                     .arg(UtilMgr::instance().getPalette(Color::blueGrey)[800]));
+
+    connect(m_exitItem.get(), &SidebarItem::onExit, this, &Sidebar::exit);
 }
 auto Sidebar::setSidebarItem() -> void
 {
@@ -43,12 +45,10 @@ auto Sidebar::setSidebarItem() -> void
     ui->sidebarItemLayout->setStretch(2, 1);
     ui->sidebarItemLayout->setAlignment(m_exitItem.get(), Qt::AlignTop);
 }
-bool Sidebar::eventFilter(QObject* watched, QEvent* event)
+
+void Sidebar::exit()
 {
-    if (event->type() == QMouseEvent::MouseButtonPress) {
-        UtilMgr::instance().log("exit Item Clicked!");
-    }
-    return QObject::eventFilter(watched, event);
+    emit onExit();
 }
 
 Sidebar::~Sidebar() = default;

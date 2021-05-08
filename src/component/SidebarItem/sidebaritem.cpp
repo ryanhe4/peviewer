@@ -11,7 +11,7 @@
 
 SidebarItem::SidebarItem(QWidget* parent, QString _title,
                          bool _selectable, bool _select,
-                         QString _rccPath)
+                         const QString& _rccPath)
     : QWidget(parent), ui(new Ui::SidebarItem),
       m_isSelect(_select),
       m_SelectAble(_selectable),
@@ -20,7 +20,36 @@ SidebarItem::SidebarItem(QWidget* parent, QString _title,
     ui->setupUi(this);
     ui->ItemText->setText(_title);
 
-    //m_isSelect 값에 따라 background Color 변경
+    setUiStyle();
+
+    setProperty(_title.toUtf8().constData(), _title);
+    installEventFilter(this);
+}
+bool SidebarItem::eventFilter(QObject* watched, QEvent* event)
+{
+    switch (event->type()) {
+    case QMouseEvent::MouseButtonPress: {
+        UtilMgr::instance().log(watched->property(m_title.toUtf8().constData()).toString().toUtf8().constData());
+        UtilMgr::instance().log("OnMousePress(), ");
+    } break;
+    case QMouseEvent::MouseButtonRelease: {
+        std::string str(watched->property(m_title.toUtf8().constData()).toString().toUtf8().constData());
+        UtilMgr::instance().log(str);
+        UtilMgr::instance().log("OnMouseRelease(), ");
+        if (str == "Exit") {
+            UtilMgr::instance().log("SidebarItem: onExit");
+            emit onExit();
+        }
+    } break;
+    default:
+        break;
+    }
+
+    return QObject::eventFilter(watched, event);
+}
+auto SidebarItem::setUiStyle() -> void
+{
+    //m_isSelect state에 따라 background Color 변경
     ui->wrapper->setStyleSheet(QString("QWidget#wrapper {"
                                        "background: %1;"
                                        "border-radius:8px;"
@@ -34,27 +63,7 @@ SidebarItem::SidebarItem(QWidget* parent, QString _title,
                                         "color: %1;"
                                         "%2"
                                         "}")
-                                        .arg(UtilMgr::instance().getPalette(Color::blueGrey)[600], _select ? "font-weight: bold;" : ""));
-
-    setProperty(_title.toUtf8().constData(), _title);
-    installEventFilter(this);
-}
-bool SidebarItem::eventFilter(QObject* watched, QEvent* event)
-{
-    switch (event->type()) {
-    case QMouseEvent::MouseButtonPress: {
-        UtilMgr::instance().log(watched->property(m_title.toUtf8().constData()).toString().toUtf8().constData());
-        UtilMgr::instance().log("OnMousePress(), ");
-    } break;
-    case QMouseEvent::MouseButtonRelease: {
-        UtilMgr::instance().log(watched->property(m_title.toUtf8().constData()).toString().toUtf8().constData());
-        UtilMgr::instance().log("OnMouseRelease(), ");
-    } break;
-    default:
-        break;
-    }
-
-    return QObject::eventFilter(watched, event);
+                                        .arg(UtilMgr::instance().getPalette(Color::blueGrey)[600], m_isSelect ? "font-weight: bold;" : ""));
 }
 
 SidebarItem::~SidebarItem() = default;

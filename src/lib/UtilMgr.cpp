@@ -62,3 +62,5 @@ auto UtilMgr::getPalette(const Color _palette) const -> std::map<int, QString>
 
     return ret;
 }
+
+//TODO QString to std::string(const char*)
