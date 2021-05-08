@@ -12,7 +12,7 @@
 Sidebar::Sidebar(QWidget* parent)
     : QWidget(nullptr),
       ui(new Ui::Sidebar),
-      m_homeItem(new SidebarItem(this, "Home", true, true)),
+      m_homeItem(new SidebarItem(this, "Main", true, true)),
       m_loadItem(new SidebarItem(this, "Load")),
       m_exitItem(new SidebarItem(this, "Exit"))
 {
@@ -46,9 +46,9 @@ auto Sidebar::setSidebarItem() -> void
     ui->sidebarItemLayout->setAlignment(m_exitItem.get(), Qt::AlignTop);
 }
 
-void Sidebar::exit()
+auto Sidebar::ExitItem() const -> SidebarItem*
 {
-    emit onExit();
+    return m_exitItem.get();
 }
 
 Sidebar::~Sidebar() = default;

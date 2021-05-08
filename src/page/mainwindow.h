@@ -9,6 +9,7 @@
 #include <memory>
 
 #include "../component/Sidebar/sidebar.h"
+#include "../component/SidebarItem/sidebaritem.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

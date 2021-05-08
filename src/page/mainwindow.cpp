@@ -44,7 +44,7 @@ MainWindow::MainWindow(QWidget* parent)
     setFixedWidth(1280);
     setFixedHeight(720);
 
-    connect(m_side.get(), &Sidebar::onExit, this, &MainWindow::close);
+    connect(m_side->ExitItem(), &SidebarItem::onExit, this, &MainWindow::close);
 }
 
 MainWindow::~MainWindow() = default;
