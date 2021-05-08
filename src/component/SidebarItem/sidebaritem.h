@@ -9,18 +9,20 @@
 #include <memory>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class SidebarItem; }
+namespace Ui {
+class SidebarItem;
+}
 QT_END_NAMESPACE
 
 class SidebarItem : public QWidget {
-Q_OBJECT
+    Q_OBJECT
+    std::unique_ptr<Ui::SidebarItem> ui;
+    bool isSelect;
 
 public:
-    explicit SidebarItem(QWidget* parent = nullptr, QString _title = "Load",QString _rccPath = ":/lib/icon/workspace.svg");
+    explicit SidebarItem(QWidget* parent = nullptr, QString _title = "Load",
+                         QString _rccPath = ":/lib/icon/workspace.svg");
     ~SidebarItem() override;
-
-private:
-    std::unique_ptr<Ui::SidebarItem> ui;
 };
 
-#endif //PEVIEWER_SIDEBARITEM_H
+#endif//PEVIEWER_SIDEBARITEM_H

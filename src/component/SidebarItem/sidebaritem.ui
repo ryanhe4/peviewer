@@ -77,58 +77,64 @@
          <number>16</number>
         </property>
         <item>
-         <widget class="QPushButton" name="Icon">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>28</width>
-            <height>60</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">* {border: none;
-}
-QPushButton:disabled
-{
-color: #454545;
-}</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../../resource.qrc">
-            <normaloff>:/lib/icon/workspace.svg</normaloff>
+         <widget class="QToolButton" name="Icon">
+             <property name="enabled">
+                 <bool>false</bool>
+             </property>
+             <property name="maximumSize">
+                 <size>
+                     <width>28</width>
+                     <height>28</height>
+                 </size>
+             </property>
+             <property name="cursor">
+                 <cursorShape>ArrowCursor</cursorShape>
+             </property>
+             <property name="contextMenuPolicy">
+                 <enum>Qt::PreventContextMenu</enum>
+             </property>
+             <property name="autoFillBackground">
+                 <bool>false</bool>
+             </property>
+             <property name="styleSheet">
+                 <string notr="true"/>
+             </property>
+             <property name="text">
+                 <string/>
+             </property>
+             <property name="icon">
+                 <iconset resource="../../resource.qrc">
+                     <normaloff>:/lib/icon/workspace.svg</normaloff>
             <disabledoff>:/lib/icon/workspace.svg</disabledoff>
             <disabledon>:/lib/icon/workspace.svg</disabledon>:/lib/icon/workspace.svg</iconset>
           </property>
           <property name="iconSize">
            <size>
-            <width>28</width>
-            <height>28</height>
+               <width>28</width>
+               <height>28</height>
            </size>
           </property>
-          <property name="autoRepeat">
-           <bool>true</bool>
-          </property>
-          <property name="autoExclusive">
-           <bool>true</bool>
-          </property>
-          <property name="default">
-           <bool>false</bool>
-          </property>
-          <property name="flat">
-           <bool>false</bool>
-          </property>
+             <property name="autoRepeat">
+                 <bool>true</bool>
+             </property>
+             <property name="autoExclusive">
+                 <bool>true</bool>
+             </property>
+             <property name="toolButtonStyle">
+                 <enum>Qt::ToolButtonFollowStyle</enum>
+             </property>
+             <property name="autoRaise">
+                 <bool>true</bool>
+             </property>
          </widget>
         </item>
         <item>
          <widget class="QLabel" name="ItemText">
           <property name="font">
            <font>
+               <family>Segoe UI</family>
             <pointsize>18</pointsize>
+               <bold>false</bold>
            </font>
           </property>
           <property name="text">

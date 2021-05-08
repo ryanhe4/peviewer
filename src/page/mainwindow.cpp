@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget* parent)
     m_side = std::make_unique<Sidebar>(this);
 
     ui->horizontalLayout->addWidget(m_side.get());
+    ui->horizontalLayout->setSpacing(32);
 
     // Temp MainPage, Ui 및 클래스로 분리예정
     auto* pv = new QLabel(this);
