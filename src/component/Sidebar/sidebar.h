@@ -6,8 +6,11 @@
 #define PEVIEWER_SIDEBAR_H
 
 #include <QLayout>
+#include <QMouseEvent>
 #include <QWidget>
 #include <memory>
+
+#include "../SidebarItem/sidebaritem.h"
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class Sidebar;
@@ -16,13 +19,16 @@ QT_END_NAMESPACE
 
 class Sidebar : public QWidget {
     Q_OBJECT
+
+    std::unique_ptr<Ui::Sidebar> ui;
+    std::unique_ptr<SidebarItem> m_homeItem;
+    std::unique_ptr<SidebarItem> m_loadItem;
+    std::unique_ptr<SidebarItem> m_exitItem;
+
 public:
     explicit Sidebar(QWidget* parent = nullptr);
     ~Sidebar() override;
-
-private:
-    //
-    std::unique_ptr<Ui::Sidebar> ui;
+    bool eventFilter(QObject* watched, QEvent* event);
 
 private:
     // method

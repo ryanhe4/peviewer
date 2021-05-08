@@ -3,6 +3,7 @@
 //
 
 #include "UtilMgr.h"
+
 auto UtilMgr::log(std::string_view msg) const -> void
 {
     std::cout << "[ " << getTime() << " ] " << msg << "\n";
@@ -20,7 +21,7 @@ auto UtilMgr::getPalette(const Color _palette) const -> std::map<int, QString>
 {
     static std::map<int, QString> ret;
     switch (_palette) {
-    case Color::blueGrey : {
+    case Color::blueGrey: {
         ret[50] = "#eceff1";
         ret[100] = "#cfd8dc";
         ret[200] = "#b0bec5";
@@ -31,8 +32,7 @@ auto UtilMgr::getPalette(const Color _palette) const -> std::map<int, QString>
         ret[700] = "#455a64";
         ret[800] = "#37474f";
         ret[900] = "#263238";
-    }
-        break;
+    } break;
     case Color::grey: {
         ret[50] = "#fafafa";
         ret[100] = "#f5f5f5";
@@ -44,8 +44,7 @@ auto UtilMgr::getPalette(const Color _palette) const -> std::map<int, QString>
         ret[700] = "#616161";
         ret[800] = "#424242";
         ret[900] = "#212121";
-    }
-        break;
+    } break;
     case Color::teal: {
         ret[50] = "#e0f2f1";
         ret[100] = "#b2dfdb";
@@ -57,8 +56,7 @@ auto UtilMgr::getPalette(const Color _palette) const -> std::map<int, QString>
         ret[700] = "#00796b";
         ret[800] = "#00695c";
         ret[900] = "#004d40";
-    }
-        break;
+    } break;
     default: break;
     }
 

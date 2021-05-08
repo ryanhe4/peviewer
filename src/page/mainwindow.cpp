@@ -32,16 +32,19 @@ MainWindow::MainWindow(QWidget* parent)
                             "}"
                             "QLabel:hover {"
                             "color: %2"
-                            "}").arg(temp)
-            .arg(UtilMgr::instance().getPalette(Color::teal)[700]);
+                            "}")
+                            .arg(temp)
+                            .arg(UtilMgr::instance().getPalette(Color::teal)[700]);
     pv->setStyleSheet(style);
     ui->horizontalLayout->addWidget(pv);
 
     // Windows Icon 설정
-    setWindowIcon(QIcon(":///lib/icon/workspace.svg"));
-	
+    //setWindowIcon(QIcon(":///lib/icon/workspace.svg"));
+
     setFixedWidth(1280);
     setFixedHeight(720);
+
+    //connect(m_side.get(), &Sidebar::click, this, &MainWindow::close)
 }
 
 MainWindow::~MainWindow() = default;

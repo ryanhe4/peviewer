@@ -6,13 +6,15 @@
 
 #include "sidebar.h"
 #include "ui_Sidebar.h"
-
 #include <QLayout>
-#include "../SidebarItem/sidebaritem.h"
+
 #include "../../lib/UtilMgr.h"
 Sidebar::Sidebar(QWidget* parent)
-        :
-        QWidget(nullptr), ui(new Ui::Sidebar)
+    : QWidget(nullptr),
+      ui(new Ui::Sidebar),
+      m_homeItem(new SidebarItem(this, "Home", true, true)),
+      m_loadItem(new SidebarItem(this, "Load")),
+      m_exitItem(new SidebarItem(this, "Exit"))
 {
     ui->setupUi(this);
 
@@ -25,20 +27,28 @@ Sidebar::Sidebar(QWidget* parent)
 auto Sidebar::setUiStyle() -> void
 {
     // Logo Style
-    ui->Logo->setStyleSheet(QString("color: %1;").arg(UtilMgr::instance().getPalette(Color::blueGrey)[800]));
+    ui->Logo->setStyleSheet(QString("color: %1;")
+                                    .arg(UtilMgr::instance().getPalette(Color::blueGrey)[800]));
 }
 auto Sidebar::setSidebarItem() -> void
 {
-    //TODO Change items to Array and member variable
-    auto* item = new SidebarItem(nullptr);
-    ui->sidebarItemLayout->addWidget(item);
-    ui->sidebarItemLayout->setStretch(1,1);
-    ui->sidebarItemLayout->setAlignment(item, Qt::AlignTop);
+    //TODO Change items to Array and member variable?
+    ui->sidebarItemLayout->addWidget(m_homeItem.get());
+    ui->sidebarItemLayout->setAlignment(m_homeItem.get(), Qt::AlignTop);
 
-    auto* item2 = new SidebarItem(nullptr, "Exit");
-    ui->sidebarItemLayout->addWidget(item2);
-    ui->sidebarItemLayout->setStretch(1,1);
-    ui->sidebarItemLayout->setAlignment(item2, Qt::AlignTop);
+    ui->sidebarItemLayout->addWidget(m_loadItem.get());
+    ui->sidebarItemLayout->setAlignment(m_loadItem.get(), Qt::AlignTop);
+
+    ui->sidebarItemLayout->addWidget(m_exitItem.get());
+    ui->sidebarItemLayout->setStretch(2, 1);
+    ui->sidebarItemLayout->setAlignment(m_exitItem.get(), Qt::AlignTop);
+}
+bool Sidebar::eventFilter(QObject* watched, QEvent* event)
+{
+    if (event->type() == QMouseEvent::MouseButtonPress) {
+        UtilMgr::instance().log("exit Item Clicked!");
+    }
+    return QObject::eventFilter(watched, event);
 }
 
 Sidebar::~Sidebar() = default;
