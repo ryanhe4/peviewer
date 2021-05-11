@@ -2,8 +2,9 @@
 // Created by yangheechan on 2021-05-02.
 //
 #include <QDirIterator>
-#include "lib/UtilMgr.h"
 #include "App.h"
+#include "lib/UtilMgr.h"
+
 int App::run() const
 {
     UtilMgr::instance().log("Application is running");

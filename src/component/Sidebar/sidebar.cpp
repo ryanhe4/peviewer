@@ -29,8 +29,6 @@ auto Sidebar::setUiStyle() -> void
     // Logo Style
     ui->Logo->setStyleSheet(QString("color: %1;")
                                     .arg(UtilMgr::instance().getPalette(Color::blueGrey)[800]));
-
-    connect(m_exitItem.get(), &SidebarItem::onExit, this, &Sidebar::exit);
 }
 auto Sidebar::setSidebarItem() -> void
 {
