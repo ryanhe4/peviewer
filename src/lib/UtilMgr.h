@@ -6,14 +6,16 @@
 #define PEVIEW_UTILMGR_H
 
 #include "template/Singleton.h"
+#include <QString>
+#include <Windows.h>
 #include <chrono>
-#include <sstream>
 #include <iomanip>
-#include <string>
 #include <iostream>
 #include <map>
-#include <QString>
-enum class Color{
+#include <sstream>
+#include <string>
+
+enum class Color {
     blueGrey,
     grey,
     teal
@@ -21,7 +23,7 @@ enum class Color{
 
 class UtilMgr final : public Singleton<UtilMgr> {
 public:
-    explicit UtilMgr(token token) { };
+    explicit UtilMgr(token token){};
     virtual ~UtilMgr() = default;
     auto log(std::string_view msg) const -> void;
     auto getTime() const -> std::string;

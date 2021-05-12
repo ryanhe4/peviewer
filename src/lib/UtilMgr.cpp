@@ -6,7 +6,13 @@
 
 auto UtilMgr::log(std::string_view msg) const -> void
 {
-    std::cout << "[ " << getTime() << " ] " << msg << "\n";
+    std::string out = "[ ";
+    out += getTime();
+    out += " ] ";
+    out += msg;
+    out += "\n";
+    std::cout << out;
+    OutputDebugString(out.c_str());
 }
 auto UtilMgr::getTime() const -> std::string
 {
