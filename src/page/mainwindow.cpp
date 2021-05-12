@@ -32,7 +32,7 @@ MainWindow::MainWindow(QWidget* parent)
                             "}"
                             "QLabel:hover {"
                             "color: %2"
-                            "}")
+                            "} ")
                             .arg(temp)
                             .arg(UtilMgr::instance().getPalette(Color::teal)[700]);
     pv->setStyleSheet(style);
