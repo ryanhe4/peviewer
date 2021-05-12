@@ -29,7 +29,6 @@ auto Sidebar::setUiStyle() -> void
     // Logo Style
     ui->Logo->setStyleSheet(QString("color: %1;")
                                     .arg(UtilMgr::instance().getPalette(Color::blueGrey)[800]));
-
 }
 auto Sidebar::setSidebarItem() -> void
 {
