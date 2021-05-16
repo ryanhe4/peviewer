@@ -3,6 +3,8 @@
 //
 
 // You may need to build the project (run Qt uic code generator) to get "ui_SidebarItem.h" resolved
+#include <QGraphicsColorizeEffect>
+#include <QGraphicsItem>
 #include <QMouseEvent>
 
 #include "../../lib/UtilMgr.h"
@@ -49,6 +51,12 @@ bool SidebarItem::eventFilter(QObject* watched, QEvent* event)
 }
 auto SidebarItem::setUiStyle() -> void
 {
+    QGraphicsColorizeEffect* effect;
+    effect = new QGraphicsColorizeEffect;
+    effect->setColor(QColor(!m_isSelect ? UtilMgr::instance().getPalette(Color::blueGrey)[600] : UtilMgr::instance().getPalette(Color::blueGrey)[700]));
+    effect->setStrength(1);
+    ui->Icon->setGraphicsEffect(effect);
+
     //m_isSelect state에 따라 background Color 변경
     ui->wrapper->setStyleSheet(QString("QWidget#wrapper {"
                                        "background: %1;"

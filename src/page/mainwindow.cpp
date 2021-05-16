@@ -39,7 +39,7 @@ MainWindow::MainWindow(QWidget* parent)
     ui->horizontalLayout->addWidget(pv);
 
     // Windows Icon 설정
-    //setWindowIcon(QIcon(":///lib/icon/workspace.svg"));
+    setWindowIcon(QIcon(":///lib/icon/workspace.svg"));
 
     setFixedWidth(1280);
     setFixedHeight(720);
