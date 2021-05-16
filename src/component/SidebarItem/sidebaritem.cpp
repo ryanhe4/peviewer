@@ -23,38 +23,40 @@ SidebarItem::SidebarItem(QWidget* parent, QString _title,
     ui->ItemText->setText(_title);
 
     setUiStyle();
-
     setProperty(_title.toUtf8().constData(), _title);
     installEventFilter(this);
 }
 bool SidebarItem::eventFilter(QObject* watched, QEvent* event)
 {
-    switch (event->type()) {
-    case QMouseEvent::MouseButtonPress: {
-        UtilMgr::instance().log(watched->property(m_title.toUtf8().constData()).toString().toUtf8().constData());
-        UtilMgr::instance().log("OnMousePress(), ");
-    } break;
-    case QMouseEvent::MouseButtonRelease: {
-        std::string str(watched->property(m_title.toUtf8().constData()).toString().toUtf8().constData());
-        UtilMgr::instance().log(str);
-        UtilMgr::instance().log("OnMouseRelease(), ");
-        if (str == "Exit") {
-            UtilMgr::instance().log("SidebarItem: onExit");
-            emit onExit();
+    if (isEnabled()) {
+        // enable 상태인 경우
+        switch (event->type()) {
+        case QMouseEvent::MouseButtonPress: {
+            UtilMgr::instance().log(watched->property(m_title.toUtf8().constData()).toString().toUtf8().constData());
+            UtilMgr::instance().log("OnMousePress(), ");
+        } break;
+        case QMouseEvent::MouseButtonRelease: {
+            std::string str(watched->property(m_title.toUtf8().constData()).toString().toUtf8().constData());
+            UtilMgr::instance().log(str);
+            UtilMgr::instance().log("OnMouseRelease(), ");
+            if (str == "Exit") {
+                UtilMgr::instance().log("SidebarItem: onExit");
+                emit onExit();
+            }
+        } break;
+        default:
+            break;
         }
-    } break;
-    default:
-        break;
     }
-
     return QObject::eventFilter(watched, event);
 }
 auto SidebarItem::setUiStyle() -> void
 {
     QGraphicsColorizeEffect* effect;
     effect = new QGraphicsColorizeEffect;
-    effect->setColor(QColor(!m_isSelect ? UtilMgr::instance().getPalette(Color::blueGrey)[600] : UtilMgr::instance().getPalette(Color::blueGrey)[700]));
-    effect->setStrength(1);
+    effect->setColor(QColor(!m_isSelect ? UtilMgr::instance().getPalette(Color::blueGrey)[600]
+                                        : UtilMgr::instance().getPalette(Color::blueGrey)[700]));
+    //effect->setStrength(1);
     ui->Icon->setGraphicsEffect(effect);
 
     //m_isSelect state에 따라 background Color 변경

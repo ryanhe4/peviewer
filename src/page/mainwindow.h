@@ -4,7 +4,6 @@
 
 #ifndef PEVIEWER_MAINWINDOW_H
 #define PEVIEWER_MAINWINDOW_H
-
 #include <QMainWindow>
 #include <memory>
 
@@ -16,7 +15,7 @@ namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow {
-Q_OBJECT
+    Q_OBJECT
 
 public:
     explicit MainWindow(QWidget* parent = nullptr);
@@ -25,6 +24,9 @@ public:
 private:
     std::unique_ptr<Ui::MainWindow> ui;
     std::unique_ptr<Sidebar> m_side;
+
+public slots:
+    void showPopup();
 };
 
 #endif //PEVIEWER_MAINWINDOW_H
