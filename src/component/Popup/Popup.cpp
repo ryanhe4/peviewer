@@ -4,13 +4,27 @@
 #include "Popup.h"
 #include "ui_Popup.h"
 
-Popup::Popup(QWidget* parent) : QWidget(parent), ui(new Ui::Popup)
+Popup::Popup(QWidget* parent) : QFrame(parent), m_UI(new Ui::Popup)
 {
-    ui->setupUi(this);
+    m_UI->setupUi(this);
     setWindowModality(Qt::ApplicationModal);
-    setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+    setWindowFlags(Qt::FramelessWindowHint | Qt::Popup);
+
+    installEventFilter(this);
+    connect(m_UI->pushButton, &QPushButton::clicked, this, [this]() {
+        qDebug() <<"왼쪽클릭";
+        emit onExit(); });
+    connect(m_UI->pushButton_2, &QPushButton::clicked, this, [this]() { hide(); });
 }
 
 Popup::~Popup()
 {
+}
+bool Popup::eventFilter(QObject* obj, QEvent* event)
+{
+    qDebug() << "[PopupEvent] " << event->type();
+    if (event->type() == QEvent::Hide) {
+        emit onHide();
+    }
+    return QObject::eventFilter(obj, event);
 }

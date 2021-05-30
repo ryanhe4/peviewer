@@ -56,9 +56,7 @@ auto SidebarItem::setUiStyle() -> void
     effect = new QGraphicsColorizeEffect;
     effect->setColor(QColor(!m_isSelect ? UtilMgr::instance().getPalette(Color::blueGrey)[600]
                                         : UtilMgr::instance().getPalette(Color::blueGrey)[700]));
-    //effect->setStrength(1);
     ui->Icon->setGraphicsEffect(effect);
-
     //m_isSelect state에 따라 background Color 변경
     ui->wrapper->setStyleSheet(QString("QWidget#wrapper {"
                                        "background: %1;"

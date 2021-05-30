@@ -5,7 +5,7 @@
 #ifndef PEVIEWER_POPUP_H
 #define PEVIEWER_POPUP_H
 
-#include <QWidget>
+#include <QFrame>
 #include <memory>
 
 QT_BEGIN_NAMESPACE
@@ -14,15 +14,20 @@ class Popup;
 }
 QT_END_NAMESPACE
 
-class Popup : public QWidget {
+class Popup : public QFrame {
     Q_OBJECT
 
 public:
     explicit Popup(QWidget* parent = nullptr);
     ~Popup() override;
 
+    bool eventFilter(QObject* obj, QEvent* event) override;
+
 private:
-    std::unique_ptr<Ui::Popup> ui;
+    std::unique_ptr<Ui::Popup> m_UI;
+signals:
+    void onExit();
+    void onHide();
 };
 
 #endif//PEVIEWER_POPUP_H

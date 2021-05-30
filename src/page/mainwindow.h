@@ -4,9 +4,11 @@
 
 #ifndef PEVIEWER_MAINWINDOW_H
 #define PEVIEWER_MAINWINDOW_H
+#include <QGraphicsEffect>
 #include <QMainWindow>
 #include <memory>
 
+#include "../component/Popup/Popup.h"
 #include "../component/Sidebar/sidebar.h"
 #include "../component/SidebarItem/sidebaritem.h"
 
@@ -20,11 +22,13 @@ class MainWindow : public QMainWindow {
 public:
     explicit MainWindow(QWidget* parent = nullptr);
     ~MainWindow() override;
+    bool eventFilter(QObject* obj, QEvent* event) override;
 
 private:
-    std::unique_ptr<Ui::MainWindow> ui;
+    std::unique_ptr<Ui::MainWindow> m_ui;
     std::unique_ptr<Sidebar> m_side;
-
+    std::unique_ptr<QGraphicsOpacityEffect> m_ScreenMaskEffect;
+    std::unique_ptr<Popup> m_Popup;
 public slots:
     void showPopup();
 };

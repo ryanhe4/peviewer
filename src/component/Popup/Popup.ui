@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>Popup</class>
- <widget class="QWidget" name="Popup">
+ <widget class="QFrame" name="Popup">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -29,7 +29,21 @@
    <string>Popup</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background:white;</string>
+   <string notr="true">background:white;
+    QFrame{
+    border: 2px solid black;
+    border-radius: 8px;
+    }
+   </string>
+  </property>
+  <property name="frameShape">
+   <enum>QFrame::Box</enum>
+  </property>
+  <property name="frameShadow">
+   <enum>QFrame::Plain</enum>
+  </property>
+  <property name="lineWidth">
+   <number>2</number>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -49,6 +63,9 @@
      <property name="textFormat">
       <enum>Qt::AutoText</enum>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
      <property name="buddy">
       <cstring>label</cstring>
      </property>
@@ -61,6 +78,21 @@
      </property>
      <item alignment="Qt::AlignBottom">
       <widget class="QPushButton" name="pushButton">
+       <property name="font">
+        <font>
+         <family>Hack</family>
+         <pointsize>14</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius:8px;
+         background: yellow;
+        </string>
+       </property>
        <property name="text">
         <string>예</string>
        </property>
@@ -68,6 +100,21 @@
      </item>
      <item alignment="Qt::AlignBottom">
       <widget class="QPushButton" name="pushButton_2">
+       <property name="font">
+        <font>
+         <family>Hack</family>
+         <pointsize>14</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius:8px;
+         background: yellow;
+        </string>
+       </property>
        <property name="text">
         <string>아니오</string>
        </property>
