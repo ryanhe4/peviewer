@@ -9,7 +9,6 @@
 
 #include "../lib/UtilMgr.h"
 #include <QLabel>
-#include <QObject>
 #include <memory>
 
 MainWindow::MainWindow(QWidget* parent)
@@ -41,8 +40,8 @@ MainWindow::MainWindow(QWidget* parent)
     m_ui->horizontalLayout->addWidget(pv);
 
     // Popup Dim 설정
-    m_ScreenMaskEffect->setOpacity(1);
-    m_ScreenMaskEffect->setOpacityMask(QColor(1, 1, 1));
+    m_ScreenMaskEffect->setOpacityMask(QColor::fromRgbF(0.99, 0.99, 0.99, 0.85));
+    m_ScreenMaskEffect->setEnabled(false);
     this->centralWidget()->setGraphicsEffect(m_ScreenMaskEffect.get());
 
     // Windows Icon 설정
@@ -56,16 +55,15 @@ MainWindow::MainWindow(QWidget* parent)
     connect(m_Popup.get(), &Popup::onExit, this, &MainWindow::close);
     connect(m_Popup.get(), &Popup::onHide, this,
             [this]() {
-                m_ScreenMaskEffect->setOpacity(1);
+                m_ScreenMaskEffect->setEnabled(false);
                 m_side->setEnabled(true);
             });
 }
 void MainWindow::showPopup()
 {
     m_side->setEnabled(false);
-    m_ScreenMaskEffect->setOpacity(0.7);
-
-    m_Popup->move(rect().center());
+    m_ScreenMaskEffect->setEnabled(true);
+    m_Popup->move(mapToGlobal(rect().center() - m_Popup->rect().center()));
     m_Popup->show();
 }
 bool MainWindow::eventFilter(QObject* obj, QEvent* event)

@@ -4,10 +4,10 @@
  <widget class="QFrame" name="Popup">
   <property name="geometry">
    <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>518</width>
-    <height>160</height>
+       <x>0</x>
+       <y>0</y>
+       <width>480</width>
+       <height>320</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -28,101 +28,131 @@
   <property name="windowTitle">
    <string>Popup</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">background:white;
-    QFrame{
-    border: 2px solid black;
-    border-radius: 8px;
-    }
-   </string>
-  </property>
-  <property name="frameShape">
-   <enum>QFrame::Box</enum>
-  </property>
-  <property name="frameShadow">
-   <enum>QFrame::Plain</enum>
-  </property>
-  <property name="lineWidth">
-   <number>2</number>
-  </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
-    <widget class="QLabel" name="label">
-     <property name="font">
-      <font>
-       <pointsize>16</pointsize>
-       <bold>true</bold>
-      </font>
+     <property name="styleSheet">
+         <string notr="true">background:transparent;</string>
      </property>
-     <property name="focusPolicy">
-      <enum>Qt::StrongFocus</enum>
+     <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
      </property>
-     <property name="text">
-      <string>정말 종료하시겠습니까?</string>
+     <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
      </property>
-     <property name="textFormat">
-      <enum>Qt::AutoText</enum>
+     <property name="lineWidth">
+         <number>0</number>
      </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-     <property name="buddy">
-      <cstring>label</cstring>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <property name="spacing">
-      <number>6</number>
-     </property>
-     <item alignment="Qt::AlignBottom">
-      <widget class="QPushButton" name="pushButton">
-       <property name="font">
-        <font>
-         <family>Hack</family>
-         <pointsize>14</pointsize>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-radius:8px;
-         background: yellow;
-        </string>
-       </property>
-       <property name="text">
-        <string>예</string>
-       </property>
-      </widget>
-     </item>
-     <item alignment="Qt::AlignBottom">
-      <widget class="QPushButton" name="pushButton_2">
-       <property name="font">
-        <font>
-         <family>Hack</family>
-         <pointsize>14</pointsize>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-radius:8px;
-         background: yellow;
-        </string>
-       </property>
-       <property name="text">
-        <string>아니오</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-  </layout>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+             <widget class="QWidget" name="widget" native="true">
+                 <property name="styleSheet">
+                     <string notr="true">.QWidget{
+                         background:white;
+                         border-radius: 8px;
+                         }
+                     </string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout">
+                     <item>
+                         <widget class="QLabel" name="label">
+                             <property name="font">
+                                 <font>
+                                     <pointsize>16</pointsize>
+                                     <bold>true</bold>
+                                     <stylestrategy>PreferAntialias</stylestrategy>
+                                 </font>
+                             </property>
+                             <property name="focusPolicy">
+                                 <enum>Qt::StrongFocus</enum>
+                             </property>
+                             <property name="text">
+                                 <string>정말 종료하시겠습니까?</string>
+                             </property>
+                             <property name="textFormat">
+                                 <enum>Qt::AutoText</enum>
+                             </property>
+                             <property name="alignment">
+                                 <set>Qt::AlignCenter</set>
+                             </property>
+                             <property name="buddy">
+                                 <cstring>label</cstring>
+                             </property>
+                         </widget>
+                     </item>
+                     <item>
+                         <layout class="QHBoxLayout" name="horizontalLayout">
+                             <property name="spacing">
+                                 <number>12</number>
+                             </property>
+                             <property name="leftMargin">
+                                 <number>24</number>
+                             </property>
+                             <property name="rightMargin">
+                                 <number>24</number>
+                             </property>
+                             <property name="bottomMargin">
+                                 <number>24</number>
+                             </property>
+                             <item alignment="Qt::AlignBottom">
+                                 <widget class="QPushButton" name="pushButton">
+                                     <property name="minimumSize">
+                                         <size>
+                                             <width>0</width>
+                                             <height>36</height>
+                                         </size>
+                                     </property>
+                                     <property name="font">
+                                         <font>
+                                             <family>Hack</family>
+                                             <pointsize>14</pointsize>
+                                             <bold>true</bold>
+                                         </font>
+                                     </property>
+                                     <property name="cursor">
+                                         <cursorShape>PointingHandCursor</cursorShape>
+                                     </property>
+                                     <property name="styleSheet">
+                                         <string notr="true">border-radius:4px;
+                                             background: yellow;
+                                         </string>
+                                     </property>
+                                     <property name="text">
+                                         <string>예</string>
+                                     </property>
+                                 </widget>
+                             </item>
+                             <item alignment="Qt::AlignBottom">
+                                 <widget class="QPushButton" name="pushButton_2">
+                                     <property name="minimumSize">
+                                         <size>
+                                             <width>0</width>
+                                             <height>36</height>
+                                         </size>
+                                     </property>
+                                     <property name="font">
+                                         <font>
+                                             <family>Hack</family>
+                                             <pointsize>14</pointsize>
+                                             <bold>true</bold>
+                                         </font>
+                                     </property>
+                                     <property name="cursor">
+                                         <cursorShape>PointingHandCursor</cursorShape>
+                                     </property>
+                                     <property name="styleSheet">
+                                         <string notr="true">border-radius:4px;
+                                             background: yellow;
+                                         </string>
+                                     </property>
+                                     <property name="text">
+                                         <string>아니오</string>
+                                     </property>
+                                 </widget>
+                             </item>
+                         </layout>
+                     </item>
+                 </layout>
+             </widget>
+         </item>
+     </layout>
  </widget>
  <resources/>
  <connections/>
